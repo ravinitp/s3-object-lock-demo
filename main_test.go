@@ -7,12 +7,13 @@ import (
 )
 
 func Test_lock(t *testing.T) {
-
+	bucket := "my-bucket"
+	path := "terraform.tfstate"
 	var count = 0
 	for i := 0; i < 10; i++ {
 		go func() {
 			fmt.Printf("Agent joined the race to aquire the lock\n")
-			versionId, err := lock()
+			versionId, err := lock(bucket, path)
 			if err != nil {
 				fmt.Printf("Agent couldn't aquire the lock, versionId - %s -- %q\n", versionId, err)
 			} else {
