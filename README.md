@@ -40,7 +40,6 @@ The tool provides two main commands: lock and unlock. These commands allow you t
 To acquire a lock on an S3 object, use the lock command as follows:
 
 ```bash
-Copy code```
 ./s3-object-lock-demo -command=lock -bucket=<S3_BUCKET_NAME> -file=<OBJECT_KEY>
 ```
 <S3_BUCKET_NAME> is the name of the S3 bucket where the object is stored.
@@ -51,6 +50,8 @@ To release a lock on an S3 object, use the unlock command as follows:
 ```bash
 ./s3-object-lock-demo -command=unlock -bucket=<S3_BUCKET_NAME> -file=<OBJECT_KEY>
 ```
+you will need to provide the versionId obtained during the lock operation to release the lock properly.
+
 <S3_BUCKET_NAME> is the name of the S3 bucket where the object is stored.
 <OBJECT_KEY> is the key (path) to the object you want to unlock.
 ## Running Unit Tests

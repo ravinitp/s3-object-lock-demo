@@ -61,7 +61,7 @@ func lock(bucket, path string) (string, error) {
 	// Copy state file
 	copyResponse, err := sdk.CopyObject(&s3.CopyObjectInput{
 		Key:        aws.String(lockFileName(path)),
-		Bucket:     aws.String("lock-demo"),
+		Bucket:     aws.String(bucket),
 		CopySource: aws.String(copyFileSource(bucket, path)),
 	})
 	if err != nil {
